@@ -1,0 +1,10 @@
+{
+  "slug": "northline-demo",
+  "name": "Northline Virtual (demo)",
+  "short_name": "Northline",
+  "source": "demo",
+  "accent": "#2a6fb7",
+  "listed": true,
+  "fallback_raw": "northline-demo.raw.json",
+  "type_map": { "A20N-LEAP": "A20N" }
+}

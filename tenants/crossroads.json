@@ -1,0 +1,10 @@
+{
+  "slug": "crossroads",
+  "name": "Crossroads Executive & Charter",
+  "short_name": "Crossroads",
+  "source": "vamsys",
+  "accent": "#e8703a",
+  "booking_url": "https://vamsys.io/login",
+  "listed": true,
+  "fallback_raw": "crossroads.raw.json"
+}

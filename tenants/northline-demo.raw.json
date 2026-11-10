@@ -1,0 +1,695 @@
+{
+ "_note": "Fictional demo airline for CrewBrief sales demos. Real airports, invented schedule.",
+ "airports": [
+  {
+   "id": 1,
+   "icao": "EHAM",
+   "iata": "AMS",
+   "name": "Amsterdam Schiphol",
+   "base": true,
+   "country": {
+    "name": "Netherlands"
+   },
+   "latitude": 52.3086,
+   "longitude": 4.7639
+  },
+  {
+   "id": 2,
+   "icao": "EGLL",
+   "iata": "LHR",
+   "name": "London Heathrow",
+   "base": false,
+   "country": {
+    "name": "United Kingdom"
+   },
+   "latitude": 51.4706,
+   "longitude": -0.4619
+  },
+  {
+   "id": 3,
+   "icao": "LFPG",
+   "iata": "CDG",
+   "name": "Paris Charles de Gaulle",
+   "base": false,
+   "country": {
+    "name": "France"
+   },
+   "latitude": 49.0097,
+   "longitude": 2.5479
+  },
+  {
+   "id": 4,
+   "icao": "LEMD",
+   "iata": "MAD",
+   "name": "Madrid Barajas",
+   "base": false,
+   "country": {
+    "name": "Spain"
+   },
+   "latitude": 40.4719,
+   "longitude": -3.5626
+  },
+  {
+   "id": 5,
+   "icao": "LIRF",
+   "iata": "FCO",
+   "name": "Rome Fiumicino",
+   "base": false,
+   "country": {
+    "name": "Italy"
+   },
+   "latitude": 41.8003,
+   "longitude": 12.2389
+  },
+  {
+   "id": 6,
+   "icao": "LPPT",
+   "iata": "LIS",
+   "name": "Lisbon Humberto Delgado",
+   "base": false,
+   "country": {
+    "name": "Portugal"
+   },
+   "latitude": 38.7813,
+   "longitude": -9.1359
+  },
+  {
+   "id": 7,
+   "icao": "EKCH",
+   "iata": "CPH",
+   "name": "Copenhagen Kastrup",
+   "base": false,
+   "country": {
+    "name": "Denmark"
+   },
+   "latitude": 55.6181,
+   "longitude": 12.6561
+  },
+  {
+   "id": 8,
+   "icao": "ENGM",
+   "iata": "OSL",
+   "name": "Oslo Gardermoen",
+   "base": false,
+   "country": {
+    "name": "Norway"
+   },
+   "latitude": 60.1939,
+   "longitude": 11.1004
+  },
+  {
+   "id": 9,
+   "icao": "LOWW",
+   "iata": "VIE",
+   "name": "Vienna International",
+   "base": false,
+   "country": {
+    "name": "Austria"
+   },
+   "latitude": 48.1103,
+   "longitude": 16.5697
+  },
+  {
+   "id": 10,
+   "icao": "LSZH",
+   "iata": "ZRH",
+   "name": "Zurich",
+   "base": false,
+   "country": {
+    "name": "Switzerland"
+   },
+   "latitude": 47.4647,
+   "longitude": 8.5492
+  },
+  {
+   "id": 11,
+   "icao": "EIDW",
+   "iata": "DUB",
+   "name": "Dublin",
+   "base": false,
+   "country": {
+    "name": "Ireland"
+   },
+   "latitude": 53.4213,
+   "longitude": -6.2701
+  },
+  {
+   "id": 12,
+   "icao": "LEBL",
+   "iata": "BCN",
+   "name": "Barcelona El Prat",
+   "base": false,
+   "country": {
+    "name": "Spain"
+   },
+   "latitude": 41.2971,
+   "longitude": 2.0785
+  },
+  {
+   "id": 13,
+   "icao": "EGCC",
+   "iata": "MAN",
+   "name": "Manchester",
+   "base": false,
+   "country": {
+    "name": "United Kingdom"
+   },
+   "latitude": 53.3537,
+   "longitude": -2.275
+  },
+  {
+   "id": 14,
+   "icao": "KJFK",
+   "iata": "JFK",
+   "name": "New York John F. Kennedy",
+   "base": false,
+   "country": {
+    "name": "United States"
+   },
+   "latitude": 40.6398,
+   "longitude": -73.7789
+  },
+  {
+   "id": 15,
+   "icao": "CYYZ",
+   "iata": "YYZ",
+   "name": "Toronto Pearson",
+   "base": false,
+   "country": {
+    "name": "Canada"
+   },
+   "latitude": 43.6772,
+   "longitude": -79.6306
+  }
+ ],
+ "fleet": [
+  {
+   "id": 501,
+   "code": "E190",
+   "name": "Embraer E190",
+   "type": "pax",
+   "max_pax": 100,
+   "max_cargo": null,
+   "weight_unit": "kg",
+   "hide_in_phoenix": false
+  },
+  {
+   "id": 502,
+   "code": "A20N-LEAP",
+   "name": "Airbus A320neo",
+   "type": "pax",
+   "max_pax": 180,
+   "max_cargo": null,
+   "weight_unit": "kg",
+   "hide_in_phoenix": false
+  },
+  {
+   "id": 503,
+   "code": "B738",
+   "name": "Boeing 737-800",
+   "type": "pax",
+   "max_pax": 186,
+   "max_cargo": null,
+   "weight_unit": "kg",
+   "hide_in_phoenix": false
+  },
+  {
+   "id": 504,
+   "code": "B789",
+   "name": "Boeing 787-9",
+   "type": "pax",
+   "max_pax": 290,
+   "max_cargo": null,
+   "weight_unit": "kg",
+   "hide_in_phoenix": false
+  }
+ ],
+ "routes": [
+  {
+   "id": 1,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 2,
+   "callsign": "NLV101",
+   "flight_number": "NL101",
+   "flight_distance": 200,
+   "flight_length": "00:58:00",
+   "fleet_ids": [
+    502,
+    503
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 2,
+   "type": "scheduled",
+   "departure_id": 2,
+   "arrival_id": 1,
+   "callsign": "NLV102",
+   "flight_number": "NL102",
+   "flight_distance": 200,
+   "flight_length": "00:58:00",
+   "fleet_ids": [
+    502,
+    503
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 3,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 3,
+   "callsign": "NLV103",
+   "flight_number": "NL103",
+   "flight_distance": 215,
+   "flight_length": "01:00:00",
+   "fleet_ids": [
+    501,
+    502
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 4,
+   "type": "scheduled",
+   "departure_id": 3,
+   "arrival_id": 1,
+   "callsign": "NLV104",
+   "flight_number": "NL104",
+   "flight_distance": 215,
+   "flight_length": "01:00:00",
+   "fleet_ids": [
+    501,
+    502
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 5,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 4,
+   "callsign": "NLV105",
+   "flight_number": "NL105",
+   "flight_distance": 788,
+   "flight_length": "02:20:00",
+   "fleet_ids": [
+    502,
+    503
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 6,
+   "type": "scheduled",
+   "departure_id": 4,
+   "arrival_id": 1,
+   "callsign": "NLV106",
+   "flight_number": "NL106",
+   "flight_distance": 788,
+   "flight_length": "02:20:00",
+   "fleet_ids": [
+    502,
+    503
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 7,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 5,
+   "callsign": "NLV107",
+   "flight_number": "NL107",
+   "flight_distance": 700,
+   "flight_length": "02:08:00",
+   "fleet_ids": [
+    502,
+    503
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 8,
+   "type": "scheduled",
+   "departure_id": 5,
+   "arrival_id": 1,
+   "callsign": "NLV108",
+   "flight_number": "NL108",
+   "flight_distance": 700,
+   "flight_length": "02:08:00",
+   "fleet_ids": [
+    502,
+    503
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 9,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 6,
+   "callsign": "NLV109",
+   "flight_number": "NL109",
+   "flight_distance": 996,
+   "flight_length": "02:49:00",
+   "fleet_ids": [
+    503
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 10,
+   "type": "scheduled",
+   "departure_id": 6,
+   "arrival_id": 1,
+   "callsign": "NLV110",
+   "flight_number": "NL110",
+   "flight_distance": 996,
+   "flight_length": "02:49:00",
+   "fleet_ids": [
+    503
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 11,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 7,
+   "callsign": "NLV111",
+   "flight_number": "NL111",
+   "flight_distance": 342,
+   "flight_length": "01:18:00",
+   "fleet_ids": [
+    501,
+    502
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 12,
+   "type": "scheduled",
+   "departure_id": 7,
+   "arrival_id": 1,
+   "callsign": "NLV112",
+   "flight_number": "NL112",
+   "flight_distance": 342,
+   "flight_length": "01:18:00",
+   "fleet_ids": [
+    501,
+    502
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 13,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 8,
+   "callsign": "NLV113",
+   "flight_number": "NL113",
+   "flight_distance": 518,
+   "flight_length": "01:42:00",
+   "fleet_ids": [
+    501,
+    502
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 14,
+   "type": "scheduled",
+   "departure_id": 8,
+   "arrival_id": 1,
+   "callsign": "NLV114",
+   "flight_number": "NL114",
+   "flight_distance": 518,
+   "flight_length": "01:42:00",
+   "fleet_ids": [
+    501,
+    502
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 15,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 9,
+   "callsign": "NLV115",
+   "flight_number": "NL115",
+   "flight_distance": 518,
+   "flight_length": "01:42:00",
+   "fleet_ids": [
+    502
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 16,
+   "type": "scheduled",
+   "departure_id": 9,
+   "arrival_id": 1,
+   "callsign": "NLV116",
+   "flight_number": "NL116",
+   "flight_distance": 518,
+   "flight_length": "01:42:00",
+   "fleet_ids": [
+    502
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 17,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 10,
+   "callsign": "NLV117",
+   "flight_number": "NL117",
+   "flight_distance": 325,
+   "flight_length": "01:15:00",
+   "fleet_ids": [
+    501,
+    502
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 18,
+   "type": "scheduled",
+   "departure_id": 10,
+   "arrival_id": 1,
+   "callsign": "NLV118",
+   "flight_number": "NL118",
+   "flight_distance": 325,
+   "flight_length": "01:15:00",
+   "fleet_ids": [
+    501,
+    502
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 19,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 11,
+   "callsign": "NLV119",
+   "flight_number": "NL119",
+   "flight_distance": 405,
+   "flight_length": "01:27:00",
+   "fleet_ids": [
+    501,
+    503
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 20,
+   "type": "scheduled",
+   "departure_id": 11,
+   "arrival_id": 1,
+   "callsign": "NLV120",
+   "flight_number": "NL120",
+   "flight_distance": 405,
+   "flight_length": "01:27:00",
+   "fleet_ids": [
+    501,
+    503
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 21,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 12,
+   "callsign": "NLV121",
+   "flight_number": "NL121",
+   "flight_distance": 670,
+   "flight_length": "02:03:00",
+   "fleet_ids": [
+    502,
+    503
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 22,
+   "type": "scheduled",
+   "departure_id": 12,
+   "arrival_id": 1,
+   "callsign": "NLV122",
+   "flight_number": "NL122",
+   "flight_distance": 670,
+   "flight_length": "02:03:00",
+   "fleet_ids": [
+    502,
+    503
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 23,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 13,
+   "callsign": "NLV123",
+   "flight_number": "NL123",
+   "flight_distance": 263,
+   "flight_length": "01:07:00",
+   "fleet_ids": [
+    501
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 24,
+   "type": "scheduled",
+   "departure_id": 13,
+   "arrival_id": 1,
+   "callsign": "NLV124",
+   "flight_number": "NL124",
+   "flight_distance": 263,
+   "flight_length": "01:07:00",
+   "fleet_ids": [
+    501
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 25,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 14,
+   "callsign": "NLV125",
+   "flight_number": "NL125",
+   "flight_distance": 3155,
+   "flight_length": "07:04:00",
+   "fleet_ids": [
+    504
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 26,
+   "type": "scheduled",
+   "departure_id": 14,
+   "arrival_id": 1,
+   "callsign": "NLV126",
+   "flight_number": "NL126",
+   "flight_distance": 3155,
+   "flight_length": "07:04:00",
+   "fleet_ids": [
+    504
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 27,
+   "type": "scheduled",
+   "departure_id": 1,
+   "arrival_id": 15,
+   "callsign": "NLV127",
+   "flight_number": "NL127",
+   "flight_distance": 3232,
+   "flight_length": "07:14:00",
+   "fleet_ids": [
+    504
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  },
+  {
+   "id": 28,
+   "type": "scheduled",
+   "departure_id": 15,
+   "arrival_id": 1,
+   "callsign": "NLV128",
+   "flight_number": "NL128",
+   "flight_distance": 3232,
+   "flight_length": "07:14:00",
+   "fleet_ids": [
+    504
+   ],
+   "tag": [],
+   "service_days": [],
+   "hidden": false
+  }
+ ]
+}

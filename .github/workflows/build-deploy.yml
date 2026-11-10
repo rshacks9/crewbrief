@@ -1,0 +1,79 @@
+name: Build briefing boards and deploy
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"   # GitHub may delay scheduled runs by a few minutes
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test engine
+        working-directory: engine
+        run: python -B -m unittest discover -s tests -t .
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install and test web
+        working-directory: web
+        run: |
+          npm ci --no-audit --no-fund
+          npm test
+
+      # Each airline's vAMSYS key is a repository secret named CREWBRIEF_<SLUG>_CLIENT_ID / _CLIENT_SECRET.
+      # Only this step sees them, packed as JSON. The engine prints counts only, never values.
+      # Set the repository variable CREWBRIEF_PUBLIC_URL (e.g. https://crewbrief.example/) so an airline
+      # whose vAMSYS call fails keeps its last deployed board instead of disappearing.
+      - name: Build boards
+        working-directory: engine
+        env:
+          CREWBRIEF_SECRETS: ${{ toJSON(secrets) }}
+          PUBLIC_URL: ${{ vars.CREWBRIEF_PUBLIC_URL }}
+        run: |
+          if [ -n "$PUBLIC_URL" ]; then
+            python -B -m crewbrief --tenants ../tenants --out ../web/public/boards --previous-base "${PUBLIC_URL%/}/boards/"
+          else
+            python -B -m crewbrief --tenants ../tenants --out ../web/public/boards
+          fi
+
+      - name: Build site
+        working-directory: web
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
