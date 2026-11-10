@@ -43,14 +43,15 @@ jobs:
           npm ci --no-audit --no-fund
           npm test
 
-      # Each airline's vAMSYS key is a repository secret named CREWBRIEF_<SLUG>_CLIENT_ID / _CLIENT_SECRET.
-      # Only this step sees them, packed as JSON. The engine prints counts only, never values.
+      # All airlines' vAMSYS keys live in ONE repository secret, CREWBRIEF_TENANT_KEYS, holding JSON like
+      # {"CREWBRIEF_SKY_EXPRESS_CLIENT_ID": "...", "CREWBRIEF_SKY_EXPRESS_CLIENT_SECRET": "..."}.
+      # Only this step sees it. The engine prints counts only, never values.
       # Set the repository variable CREWBRIEF_PUBLIC_URL (e.g. https://crewbrief.example/) so an airline
       # whose vAMSYS call fails keeps its last deployed board instead of disappearing.
       - name: Build boards
         working-directory: engine
         env:
-          CREWBRIEF_SECRETS: ${{ toJSON(secrets) }}
+          CREWBRIEF_SECRETS: ${{ secrets.CREWBRIEF_TENANT_KEYS }}
           PUBLIC_URL: ${{ vars.CREWBRIEF_PUBLIC_URL }}
         run: |
           if [ -n "$PUBLIC_URL" ]; then

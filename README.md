@@ -42,9 +42,17 @@ npm run build && npm run preview     # http://localhost:4190
 ## Onboard a new airline
 
 1. The airline owner creates an API client in vAMSYS Orwell with only the `ops:read` scope.
-2. Get the client ID and secret through a private channel (not email or Discord). Save them as
-   repository secrets `CREWBRIEF_<SLUG>_CLIENT_ID` and `CREWBRIEF_<SLUG>_CLIENT_SECRET`, where
-   `<SLUG>` is the slug in capitals with dashes as underscores (`sky-express` → `SKY_EXPRESS`).
+2. Get the client ID and secret through a private channel (not email or Discord). All airlines'
+   keys live in one repository secret, `CREWBRIEF_TENANT_KEYS`, as JSON:
+
+   ```json
+   {"CREWBRIEF_SKY_EXPRESS_CLIENT_ID": "…", "CREWBRIEF_SKY_EXPRESS_CLIENT_SECRET": "…"}
+   ```
+
+   The key names are the slug in capitals with dashes as underscores (`sky-express` → `SKY_EXPRESS`).
+   GitHub secrets can't be read back, so keep the master copy in a password manager and paste the
+   whole JSON again when you add an airline. (Passing all secrets with `toJSON(secrets)` gets the
+   workflow flagged by GitHub as possibly malicious, so don't.)
 3. Add `tenants/<slug>.json`:
 
    ```json
@@ -76,7 +84,7 @@ To pause an airline that stops paying, set `"active": false`. Its board disappea
 - vAMSYS Owner Terms §6.3: the airline is responsible for any third party it gives API
   credentials to, and the limit is 100 requests per minute per airline. CrewBrief makes 3 or more
   calls per airline every 20 minutes (one per page of results).
-- Credentials exist only as repository secrets, and only the build step sees them. Logs show counts,
+- Credentials exist only in the `CREWBRIEF_TENANT_KEYS` repository secret, and only the build step sees it. Logs show counts,
   never values or response bodies.
 - If one airline's vAMSYS call fails, the others still build. With `CREWBRIEF_PUBLIC_URL` set, the
   failing airline keeps its last deployed board. A weather outage never blocks a deploy.
