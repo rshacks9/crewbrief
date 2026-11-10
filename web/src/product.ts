@@ -1,10 +1,21 @@
 // Business settings for the landing page. Edit here; nothing else needs to change.
 // Prices are the owner's call. These are the proposed launch prices.
 
+const EARLY_ACCESS_EMAIL = "Tgaffneyiii@proton.me";
+const EARLY_ACCESS_BODY = [
+  "Hi, I'd like early access to CrewBrief.",
+  "",
+  "Airline name:",
+  "vAMSYS airline link:",
+  "Roughly how many routes:",
+  "Main aircraft types:",
+  "",
+].join("\n");
+
 export const PRODUCT = {
   name: "CrewBrief",
   /** Where "Get early access" goes: a form, a Discord invite or a mailto: link. null hides the button. */
-  earlyAccessUrl: null as string | null,
+  earlyAccessUrl: `mailto:${EARLY_ACCESS_EMAIL}?subject=${encodeURIComponent("CrewBrief early access")}&body=${encodeURIComponent(EARLY_ACCESS_BODY)}` as string | null,
   plans: [
     {
       name: "Founding airline",

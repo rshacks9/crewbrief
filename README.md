@@ -93,7 +93,7 @@ To pause an airline that stops paying, set `"active": false`. Its board disappea
 
 ## Before taking money
 
-- Pick the final name and domain, and set `earlyAccessUrl` and prices in `web/src/product.ts`.
+- Pick the final name and domain, and confirm the prices in `web/src/product.ts` (early access emails go to the address set there).
 - Use a payment processor with hosted checkout, such as Stripe Payment Links, so no card data
   ever touches this site.
 - Write terms of service and a privacy notice.
